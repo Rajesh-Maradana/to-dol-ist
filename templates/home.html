@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>TO-DO</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col">
+            <nav class="navbar navbar-inverse bg-dark">
+                <center> <h2 style="color: white;">To Do List</h2></center>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container" style="width:24%;">
+        <div class="col">
+            <h2></h2>
+            <form class="form-inline" action="todo/" method="POST" >
+                <input type="text" class="form-control" placeholder="Type Here..." name="list1">
+                <button type="submit" class="btn btn-primary btn-md ml-4" value="submit">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container mt-4" style="width:50%">
+        <div class="col">
+            <ul class="list-group">
+                {%for todo in todo_items%}
+                    {%if todo.text%}
+                        <li class="list-group-item">{{ todo.text }}
+                        <div class="float-right">
+                            <form action="delete/{{todo.id}}" method="POST">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </div>
+                    </li>
+                    {%endif%}
+                {%endfor%}
+              </ul>
+        </div>
+    </div>
+</body>
+</html>
